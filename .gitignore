@@ -15,6 +15,7 @@ venv/
 # Session files and secrets
 .monarchmoney_session
 .mm/
+monarchmoney.log
 *.pickle
 *.session
 *.secret
