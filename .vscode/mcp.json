@@ -1,4 +1,5 @@
 {
+	"$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/schema/2025-06-18/schema.json",
 	"servers": {
 		"monarch-money-mcp-enhanced": {
 			"type": "stdio",
@@ -6,15 +7,16 @@
 			"cwd": "${workspaceFolder}",
 			"args": [
 				"run",
-				"python",
 				"server.py"
 			],
-			"env": {
-				"MONARCH_EMAIL": "your-email@example.com",
-				"MONARCH_PASSWORD": "your-password",
+			// "env": {
+				// Preferred to add this to the envfile instead
+				// "MONARCH_EMAIL": "your-email@example.com",
+				// "MONARCH_PASSWORD": "your-password",
 				// See readme for this
-				"MONARCH_MFA_SECRET": "your-mfa-secret-key"
-			}
+				// "MONARCH_MFA_SECRET": "your-mfa-secret-key"
+			// },
+			"envFile": "${workspaceFolder}/monarchmcp.env"
 		}
 	}
 }

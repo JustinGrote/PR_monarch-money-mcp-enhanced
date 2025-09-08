@@ -16,6 +16,7 @@ venv/
 .monarchmoney_session
 .mm/
 monarchmoney.log
+mcp.env
 *.pickle
 *.session
 *.secret
@@ -23,6 +24,7 @@ monarchmoney.log
 *.key
 *_session.*
 session_*
+*.env
 
 # IDE
 .vscode/
