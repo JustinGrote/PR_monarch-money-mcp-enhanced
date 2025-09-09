@@ -1,7 +1,27 @@
 {
 	"$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/schema/2025-06-18/schema.json",
+	"inputs": [
+		{
+			"type": "promptString",
+			"id": "MONARCH_EMAIL",
+			"description": "Enter your Monarch Email",
+			"default": "youremail@domain.com"
+		},
+		{
+			"type": "promptString",
+			"id": "MONARCH_PASSWORD",
+			"description": "Enter your Monarch Password",
+			"password": true
+		},
+		{
+			"type": "promptString",
+			"id": "MONARCH_MFA_SECRET",
+			"description": "Enter your Monarch MFA OTP Secret. See the README for details. Example: T5SPVJIBRNPNNINFSH5W7RFVF2XYADYX",
+			"password": true
+		}
+	],
 	"servers": {
-		"monarch-money-mcp-enhanced": {
+		"monarchMoney": {
 			"type": "stdio",
 			"command": "uv",
 			"cwd": "${workspaceFolder}",
@@ -9,14 +29,13 @@
 				"run",
 				"server.py"
 			],
-			// "env": {
-				// Preferred to add this to the envfile instead
-				// "MONARCH_EMAIL": "your-email@example.com",
-				// "MONARCH_PASSWORD": "your-password",
-				// See readme for this
-				// "MONARCH_MFA_SECRET": "your-mfa-secret-key"
-			// },
-			"envFile": "${workspaceFolder}/monarchmcp.env"
+			"env": {
+				"MONARCH_EMAIL": "${input:MONARCH_EMAIL}",
+				"MONARCH_PASSWORD": "${input:MONARCH_PASSWORD}",
+				"MONARCH_MFA_SECRET": "${input:MONARCH_MFA_SECRET}"
+			}
+			// Alternatively: Specify secrets in a private env file
+			// "envFile": "${workspaceFolder}/monarchmcp.env"
 		}
 	}
 }
